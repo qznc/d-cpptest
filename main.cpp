@@ -5,23 +5,24 @@
 
 void d_init();
 void d_term();
-void registering();
+LineObserver<int>* from_d();
 
 int main () {
   d_init();
 
-  vector<shared_ptr<LineObserver<int> > > obs;
-  obs.push_back(make_shared<PostfixPrinter<int> >());
+  vector<LineObserver<int>*> obs;
+  obs.push_back(new PostfixPrinter<int>());
 
-  registering();
+  auto dobj = from_d();
+  obs.push_back(dobj);
 
   int i = 0;
   for (string line; getline(cin, line); i++) {
     auto begin = obs.begin();
     auto end = obs.end();
     for (; begin != end; ++begin) {
-      shared_ptr<LineObserver<int> > ob = *begin;
-      ob->observeLine(line, i);
+      auto ob = *begin;
+      ob->observeLine(line.c_str(), i);
     }
   }
 
