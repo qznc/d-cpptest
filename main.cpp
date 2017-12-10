@@ -1,10 +1,20 @@
+#include <vector>
+#include <memory>
+
 #include <main.h>
 
-using namespace std;
-
 int main () {
-  for (string line; getline(cin, line);) {
-    cout << line << endl;
+  vector<shared_ptr<LineObserver<int> > > obs;
+  obs.push_back(make_shared<PostfixPrinter<int> >());
+
+  int i = 0;
+  for (string line; getline(cin, line); i++) {
+    auto begin = obs.begin();
+    auto end = obs.end();
+    for (; begin != end; ++begin) {
+      shared_ptr<LineObserver<int> > ob = *begin;
+      ob->observeLine(line, i);
+    }
   }
   return 0;
 }

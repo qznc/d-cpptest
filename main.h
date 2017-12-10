@@ -6,18 +6,13 @@ using namespace std;
 template <class T>
 class LineObserver {
   public:
-  virtual void init(T x) = 0;
-  virtual void observeLine(string line) = 0;
+  virtual void observeLine(string line, T payload) const = 0;
 };
 
 template <class T>
-class PrefixPrinter : virtual LineObserver<T> {
-  T prefix;
+class PostfixPrinter : public virtual LineObserver<T> {
   public:
-  virtual void init(T x) {
-    prefix = x;
-  }
-  virtual void observeLine(string line) {
-    cout << prefix << line << endl;
+  virtual void observeLine(string line, T payload) const {
+    cout << line << " " << payload << endl;
   }
 };
