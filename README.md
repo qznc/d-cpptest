@@ -1,7 +1,13 @@
 # C++ Test
 
 Exploring a how well D can interact with C++.
-Basic idea: The program reads lines from stdin and does things with it.
+D has [more potential than Rust](https://internals.rust-lang.org/t/interfacing-d-to-legacy-c-code-a-summary-of-a-competing-languages-capabilities/1406).
+
+[Walter Bright says](http://www.walterbright.com/cppint.pdf)
+that exceptions are still a problem though.
+
+Basic idea of the example:
+The program reads lines from stdin and does things with it.
 There is an observer class declared in C++.
 Can we also register a D class?
 Yes, we can.
