@@ -5,6 +5,8 @@ D has [more potential than Rust](https://internals.rust-lang.org/t/interfacing-d
 
 [Walter Bright says](http://www.walterbright.com/cppint.pdf)
 that exceptions are still a problem though.
+[LDC 1.7.0 release](https://github.com/ldc-developers/ldc/releases)
+says "C++ exceptions can now be caught in D code".
 
 Basic idea of the example:
 The program reads lines from stdin and does things with it.
